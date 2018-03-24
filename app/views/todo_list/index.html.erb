@@ -1,0 +1,32 @@
+	<h1>Задачи</h1>
+	
+	<div id="plus"><img src="/assets/plus48.png" alt="Новая задача"></div>
+	<div id="addtask" style="display: none;">
+		<h3>Новая задача</h3>
+			
+		<%= form_tag(todo_list_create_path, method: "post", id: "form") do %>
+		  <%= text_field_tag(:text) %>
+		  <br>
+		  <select name="project_id" id="project_id" onchange="document.getElementById('selected').innerHTML = document.getElementById('project_id').options[document.getElementById('project_id').selectedIndex].innerHTML;">
+			<% @projects.each do |project| %>
+				<%= options_for_select([[project["title"], project["id"]]]) %>
+			<% end %>
+		  <select><span id="selected"><%= @projects[0].title %></span>
+		  <br>
+		  <a id="hide" href="#">ОТМЕНА</a> 
+		  <%= link_to "ОК", "#", id: "your_link" %>
+		<% end %>
+	</div>
+	
+	<% @projects.each do |project| %>
+		<h3><%= project["title"] %></h3>
+		<ul>
+		  <% @todo.each do |task| %>
+			<% if task["project_id"] == project["id"] then %>
+				<li><%= task.text %></li>
+			<% end %>
+		  <% end %>
+		</ul>
+	<% end %>
+
+	

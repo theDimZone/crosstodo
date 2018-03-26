@@ -12,4 +12,233 @@
  *
  *= require_tree .
  *= require_self
+ *= require_vendor/select2
+ *= require_vendor/blue
+ *= require_vendor/bootstrap-grid
+ 
  */
+ 
+ @font-face {
+  font-family: 'OpenSans-Light';
+  src:url('OpenSans-Light.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+ @font-face {
+  font-family: 'OpenSans-Regular';
+  src:url('OpenSans-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+ @font-face {
+  font-family: 'OpenSans-Semibold';
+  src:url('OpenSans-Semibold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+	background-color:rgb(248,248,248);
+}
+
+#headline {
+	position: relative;
+	font-family: 'OpenSans-Light';
+	font-size: 11px;
+	width: 100%;
+    padding: 0px;
+    text-align:center;
+    background-color:rgb(58,175,218);
+	box-shadow: 0 0px 1px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+#headline h1 {
+    margin:auto;
+    line-height:65px;
+    vertical-align:middle;
+	color: white;
+}
+
+#plus {
+	position: absolute;
+	right: 20px;
+	top: 24px;
+}
+
+#completed {
+	text-decoration: line-through;
+}
+
+#cards {
+	padding-top:40px;
+		  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+#todoCard {
+	margin:10px;
+	background-color:white;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+
+	-webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+#todoCard li {
+	list-style-type: none;
+	font-family: 'OpenSans-Light';
+	font-size: 13px;
+	padding:10px;
+}
+
+#todoCard ul {
+	padding:10px;
+	padding-top:0px;
+}
+
+#todoCard h3 {
+	padding:15px;
+	padding-bottom:0px;
+	font-family: 'OpenSans-Semibold';
+	font-size: 14px;
+	text-transform: uppercase;
+}
+
+#delimeter {
+	border: 0;
+    height: 0;
+    border-bottom: 1px solid rgba(248, 248, 248, 0.7);
+}
+
+#todoCard ul li span{
+	margin-left:13px;
+}
+
+
+#addtask {
+	display: none;
+	position: absolute;
+	top: 50%; left: 50%;
+	transform: translate(-50%,-50%);
+	width: 370px;
+	height: 215px;
+	background-color: white;
+}
+
+#addtask h3 {
+	font-weight: bold;
+	text-align:center;
+	padding:0px;
+	font-family: 'OpenSans-Regular';
+	font-size: 11px;
+}
+
+#addtaskflex {
+	    display: none;   
+		height: 100%;
+		width: 100%;
+		position: fixed;
+		z-index: 1;
+		left: 0;
+		top: 0;
+		background-color: rgb(0,0,0);
+		background-color: rgba(0,0,0, 0.75);
+		overflow-x: hidden;
+}
+
+#text {
+	font-family: 'OpenSans-Regular';
+	color: rgba(0, 0, 0, 1);
+	font-size: 14px;
+	margin-top:10px;
+	margin-left:15px;
+	margin-right:15px;
+	height: 40px;
+	width: 340px;
+	padding-left: 10px;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+#select {
+	font-family: 'OpenSans-Regular';
+	color: rgba(0, 0, 0, 1);
+	font-size: 14px;
+	margin-left:15px;
+	margin-top:15px;
+	width:340px;
+}
+
+
+.select2-results__options {
+	font-family: 'OpenSans-Regular';
+	color: rgba(0, 0, 0, 1);
+	font-size: 14px;
+}
+
+.select2-selection, .select2-selection__rendered, .select2-selection__arrow {
+	height: 40px !important;
+
+   span {
+
+       line-height: 40px !important;
+       text-align: center-left;
+
+   }
+
+}
+
+.select2-selection {
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	border-radius: 0 !important;
+
+}
+
+#buttons {
+	position: relative;
+	margin-left: 15px;
+	margin-top: 10px;
+	margin-right: 15px;
+	font-weight: bold;
+	font-family: 'OpenSans-Regular';
+	font-size: 11px;
+}
+
+#cancel {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	background-color: rgb(159,159,159);
+	width:165px;
+	height:40px;
+	text-align:center;
+    line-height:40px;
+    vertical-align:middle;
+	color: white;
+}
+
+#hide:link { text-decoration: none; } 
+#hide:visited { text-decoration: none; } 
+#hide:active { text-decoration: none; }
+#cancel:hover { background-color: rgba(159,159,159,0.75); } 
+
+#ok {
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	color:white;
+	background-color: rgb(58,175,218);
+	width:165px;
+	height:40px;
+	text-align:center;
+    line-height:40px;
+    vertical-align:middle;
+}
+
+#submit:link { text-decoration: none; } 
+#submit:visited { text-decoration: none; } 
+#submit:active { text-decoration: none; }
+#ok:hover { background-color: rgba(58,175,218,0.75); } 

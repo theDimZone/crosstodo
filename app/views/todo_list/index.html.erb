@@ -1,32 +1,63 @@
-	<h1>Задачи</h1>
-	
-	<div id="plus"><img src="/assets/addTodoIcon.png" alt="Новая задача"></div>
-	<div id="addtask" style="display: none;">
-		<h3>Новая задача</h3>
-			
-		<%= form_tag(todo_list_create_path, method: "post", id: "form") do %>
-		  <%= text_field_tag(:text) %>
-		  <br>
-		  <select name="project_id" id="project_id" onchange="document.getElementById('selected').innerHTML = document.getElementById('project_id').options[document.getElementById('project_id').selectedIndex].innerHTML;">
-			<% @projects.each do |project| %>
-				<%= options_for_select([[project["title"], project["id"]]]) %>
+	<div id="addtaskflex">
+		<div id="addtask">
+			<h3>НОВАЯ ЗАДАЧА</h3>
+			<hr id="delimeter" noshade>
+			<%= form_tag(todo_list_create_path, method: "post", id: "form") do %>
+			  <%= text_field_tag(:text, nil, placeholder: 'Название задачи...') %>
+
+			  <div id="select">
+				  <select name="project_id" id="project_id" style="width:100%;">
+					<% @projects.each do |project| %>
+						<%= options_for_select([[project["title"], project["id"]]]) %>
+					<% end %>
+				  </select>
+			  </div>
+
+			  <div id="buttons">
+				  <a id="hide" href="#"><div id="cancel">ОТМЕНА</div></a>
+				  <%= link_to "#", id: "submit" do %>
+					  <div id="ok">ОК</div>
+				  <% end %>
+			  </div>
 			<% end %>
-		  <select><span id="selected"><%= @projects[0].title %></span>
-		  <br>
-		  <a id="hide" href="#">ОТМЕНА</a> 
-		  <%= link_to "ОК", "/", id: "your_link" %>
-		<% end %>
+		</div>
 	</div>
 	
-	<% @projects.each do |project| %>
-		<h3><%= project["title"] %></h3>
-		<ul>
-		  <% @todo.each do |task| %>
-			<% if task["project_id"] == project["id"] then %>
-				<li><%= task.text %></li>
+	<div id="headline">
+		<h1>Задачи</h1>
+		<div id="plus">
+			<%= image_tag("icons/addTodoIcon.png", :alt => "Новая задача") %>
+		</div>
+	</div>
+	
+		
+
+	<div class="container">
+	
+		<div class="row" id="cards">
+			<% @projects.each do |project| %>
+				<div class="col-12 col-md-6 col-lg-4">
+					<div id="todoCard">
+						<h3><%= project["title"] %></h3>
+						<hr id="delimeter" noshade>
+						<ul>
+						  <% @todo.each do |task| %>
+							<% if task["project_id"] == project["id"] then %>
+								<%= form_tag(todo_list_update_path, method: "post", id: task.id) do %>
+									<%= hidden_field_tag 'todo_id', task.id %>
+									<% if task.isCompleted == true then %>
+										<li><input type="checkbox" id="check" value="<%= task.id %>" checked><span class="<%= task.id %>" id="completed"><%= task.text %></span></li>
+									<% else  %>
+										<li><input type="checkbox" id="check" value="<%= task.id %>"><span class="<%= task.id %>" id="uncompleted"><%= task.text %></span></li>
+									<% end %>
+								<% end %>
+							<% end %>
+						  <% end %>
+						</ul>
+					</div>
+				</div>
 			<% end %>
-		  <% end %>
-		</ul>
-	<% end %>
+		</div>
+	</div>
 
 	

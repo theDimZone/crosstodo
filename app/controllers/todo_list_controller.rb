@@ -11,11 +11,9 @@ class TodoListController < ApplicationController
 	end
 
 	def update
-		status = true
-		if Todo.find(params[:todo_id]).isCompleted == true then
-			status = false
-		end
-		Todo.update(params[:todo_id], :isCompleted => status)
+		todo = Todo.find(params[:todo_id])
+		todo.isCompleted = !todo.isCompleted
+		todo.save
 		redirect_to action: 'index'
 	end
 

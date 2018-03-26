@@ -44,7 +44,10 @@ body {
 }
 
 #headline {
-	position: relative;
+	z-index: 1;
+	top:0px;
+	left:0px;
+	position: fixed;
 	font-family: 'OpenSans-Light';
 	font-size: 11px;
 	width: 100%;
@@ -72,7 +75,7 @@ body {
 }
 
 #cards {
-	padding-top:40px;
+	padding-top:80px;
 		  -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
@@ -142,7 +145,7 @@ body {
 		height: 100%;
 		width: 100%;
 		position: fixed;
-		z-index: 1;
+		z-index: 2;
 		left: 0;
 		top: 0;
 		background-color: rgb(0,0,0);

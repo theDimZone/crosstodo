@@ -51,13 +51,13 @@
 		});
 		
 		$('input').on('ifToggled', function(event){
-			let todo_id = event.currentTarget.value;
+			var todo_id = event.currentTarget.value;
 			$("#"+todo_id).submit();
 		});
 		
 		
 		$("span").on("click", function(event) {
-			let todo_id = event.currentTarget.className;
+			var todo_id = event.currentTarget.className;
 			$("#"+todo_id).submit();
 		});
 	});

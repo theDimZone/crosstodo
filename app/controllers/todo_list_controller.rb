@@ -5,9 +5,8 @@ class TodoListController < ApplicationController
 		
 		respond_to do |format|
 			format.html # index.html.erb
-			#format.json  { render :json => {:todo => @todo, 
-			#								:projects => @projects }}
-			format.json { render json: @todo }
+			format.json  { render :json => {:todo => @todo, 
+											:projects => @projects }}
 		end
 	end
 

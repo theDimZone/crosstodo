@@ -2,6 +2,13 @@ class TodoListController < ApplicationController
 	def index
 		@todo = Todo.all
 		@projects = Project.all
+		
+		respond_to do |format|
+		
+			format.html # index.html.erb 
+			format.json  { render :json => {:todo => @todo, 
+											:projects => @projects }}
+		end
 	end
 
 	def update

@@ -4,9 +4,10 @@ class TodoListController < ApplicationController
 		@projects = Project.all
 		
 		respond_to do |format|
-		
-			format.json  { render :json => {:todo => @todo, 
-											:projects => @projects }}
+			format.html # index.html.erb
+			#format.json  { render :json => {:todo => @todo, 
+			#								:projects => @projects }}
+			format.json { render json: @todo }
 		end
 	end
 
